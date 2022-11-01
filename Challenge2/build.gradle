@@ -1,0 +1,27 @@
+plugins {
+    id 'groovy'
+    id 'java'
+}
+
+group 'org.kpmgchallenge.challengeTwo'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile group: 'com.amazonaws', name: 'aws-java-sdk-core', version: '1.8.10.2'
+    compile 'org.codehaus.groovy:groovy-all:4.0.6'
+}
+
+task customFatJar(type: Jar) {
+    manifest {
+        attributes 'Main-Class': 'EC2MetadataJSONUtil'
+    }
+    baseName = 'kpmgchallenge2'
+    from {
+        println configurations.compile.getAsPath();
+        configurations.compile.collect {it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}

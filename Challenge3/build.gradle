@@ -1,0 +1,15 @@
+plugins {
+    id 'groovy'
+    id 'java'
+}
+
+group 'org.kpmgchallenge.challengeThree'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'org.codehaus.groovy:groovy-all:2.3.11'
+}
